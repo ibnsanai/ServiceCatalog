@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="srvcat_Service" name="service-view" extends="_local">
+        <property name="owner" view="_minimal">
+            <property name="firstName"/>
+            <property name="lastName"/>
+        </property>
+        <property name="team" view="_minimal">
+            <property name="participant" view="_minimal">
+                <property name="firstName"/>
+                <property name="lastName"/>
+            </property>
+        </property>
+        <property name="agreement" view="_minimal">
+            <property name="liabilityOwner"/>
+            <property name="liabilityOrg"/>
+            <property name="param" view="_minimal">
+                <property name="param"/>
+            </property>
+        </property>
+        <property name="agrReq" view="_minimal">
+            <property name="user" view="_minimal"/>
+        </property>
+        <property name="agrConfirm" view="_minimal">
+            <property name="typeAgreement" view="_minimal"/>
+            <property name="user" view="_minimal"/>
+        </property>
+    </view>
+</views>
