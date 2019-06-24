@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="ServiceCatalog" transaction-type="RESOURCE_LOCAL">
-
+        <class>servicecatalog.entity.AgreementRequest</class>
+        <class>servicecatalog.entity.AgreementParams</class>
+        <class>servicecatalog.entity.AgreementConfirm</class>
+        <class>servicecatalog.entity.Service</class>
+        <class>servicecatalog.entity.ServiceRequest</class>
+        <class>servicecatalog.entity.ServiceTeam</class>
+        <class>servicecatalog.entity.TypeAgreement</class>
     </persistence-unit>
 </persistence>

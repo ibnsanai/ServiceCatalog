@@ -1,5 +1,6 @@
 package servicecatalog.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.security.entity.User;
 
@@ -14,9 +15,10 @@ public class AgreementRequest extends StandardEntity {
     @JoinColumn(name = "TYPE_AGREEMENT_ID")
     protected TypeAgreement typeAgreement;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
+    @Transient
+    @MetaProperty
     protected User user;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SERVICE_ID")
     protected Service service;

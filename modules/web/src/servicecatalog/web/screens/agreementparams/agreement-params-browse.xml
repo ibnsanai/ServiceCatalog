@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="agreementParamsesTable"
+        messagesPack="servicecatalog.web.screens.agreementparams">
+    <data readOnly="true">
+        <collection id="agreementParamsesDc"
+                    class="servicecatalog.entity.AgreementParams"
+                    view="_local">
+            <loader id="agreementParamsesDl">
+                <query>
+                    <![CDATA[select e from srvcat_AgreementParams e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="agreementParamsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="agreementParamsesTable"
+                dataLoader="agreementParamsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="agreementParamsesTable"
+                    width="100%"
+                    dataContainer="agreementParamsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="param"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="agreementParamsesTable.create"/>
+                <button id="editBtn" action="agreementParamsesTable.edit"/>
+                <button id="removeBtn" action="agreementParamsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

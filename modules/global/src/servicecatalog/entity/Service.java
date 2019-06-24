@@ -1,6 +1,7 @@
 package servicecatalog.entity;
 
 import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
@@ -28,8 +29,8 @@ public class Service extends StandardEntity {
     @Column(name = "DOCS_URL")
     protected String docsURL;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OWNER_ID")
+    @Transient
+    @MetaProperty
     protected User owner;
 
     @Composition
