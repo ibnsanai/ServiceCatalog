@@ -6,7 +6,7 @@
     <data readOnly="true">
         <collection id="servicesDc"
                     class="servicecatalog.entity.Service"
-                    view="_local">
+                    view="service-view">
             <loader id="servicesDl">
                 <query>
                     <![CDATA[select e from srvcat_Service e]]>
@@ -34,13 +34,6 @@
             <columns>
                 <column id="title"/>
                 <column id="briefDesc"/>
-                <column id="fullDesc"/>
-                <column id="docsURL"/>
-                <column id="format"/>
-                <column id="stakeHolder"/>
-                <column id="status"/>
-                <column id="countRequest"/>
-                <column id="countConfirmAgreement"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

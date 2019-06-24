@@ -14,7 +14,7 @@ create table SRVCAT_SERVICE (
     BRIEF_DESC varchar(255),
     FULL_DESC varchar(255),
     DOCS_URL varchar(255),
-    OWNER_ID varchar(36),
+    OWNER varchar(255),
     FORMAT varchar(50),
     STAKE_HOLDER varchar(255),
     STATUS varchar(50),
@@ -56,7 +56,7 @@ create table SRVCAT_AGREEMENT_CONFIRM (
     DELETED_BY varchar(50),
     --
     TYPE_AGREEMENT_ID varchar(36),
-    USER_ID varchar(36),
+    USER varchar(255),
     SERVICE_ID varchar(36),
     --
     primary key (ID)
@@ -74,7 +74,7 @@ create table SRVCAT_AGREEMENT_REQUEST (
     DELETED_BY varchar(50),
     --
     TYPE_AGREEMENT_ID varchar(36),
-    USER_ID varchar(36),
+    USER varchar(255),
     SERVICE_ID varchar(36),
     --
     primary key (ID)
@@ -109,7 +109,7 @@ create table SRVCAT_SERVICE_TEAM (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PARTICIPANT_ID varchar(36),
+    PARTICIPANT varchar(255),
     SERVICE_ID varchar(36),
     --
     primary key (ID)

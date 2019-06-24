@@ -1,8 +1,6 @@
 package servicecatalog.entity;
 
-import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.security.entity.User;
 
 import javax.persistence.*;
 
@@ -15,13 +13,20 @@ public class AgreementRequest extends StandardEntity {
     @JoinColumn(name = "TYPE_AGREEMENT_ID")
     protected TypeAgreement typeAgreement;
 
-    @Transient
-    @MetaProperty
-    protected User user;
+    @Column(name = "USER")
+    protected String user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SERVICE_ID")
     protected Service service;
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getUser() {
+        return user;
+    }
 
     public Service getService() {
         return service;
@@ -37,14 +42,6 @@ public class AgreementRequest extends StandardEntity {
 
     public void setTypeAgreement(TypeAgreement typeAgreement) {
         this.typeAgreement = typeAgreement;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
 }

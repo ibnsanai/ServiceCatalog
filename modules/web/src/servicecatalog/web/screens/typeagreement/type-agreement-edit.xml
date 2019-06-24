@@ -6,8 +6,9 @@
     <data>
         <instance id="typeAgreementDc"
                   class="servicecatalog.entity.TypeAgreement"
-                  view="_local">
+                  view="typeAgreement-edit">
             <loader/>
+            <collection id="paramDc" property="param"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -19,6 +20,23 @@
                 <textField id="liabilityOrgField" property="liabilityOrg"/>
             </column>
         </form>
+        <groupBox id="paramBox" caption="msg://servicecatalog.entity/TypeAgreement.param">
+            <table id="paramTable" dataContainer="paramDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="param"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="paramTable.create"/>
+                    <button action="paramTable.edit"/>
+                    <button action="paramTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

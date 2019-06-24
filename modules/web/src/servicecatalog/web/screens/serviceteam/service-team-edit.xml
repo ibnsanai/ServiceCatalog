@@ -2,20 +2,20 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://editorCaption"
         focusComponent="form"
-        messagesPack="servicecatalog.web.screens.agreementparams">
+        messagesPack="servicecatalog.web.screens.serviceteam">
     <data>
-        <instance id="agreementParamsDc"
-                  class="servicecatalog.entity.AgreementParams"
-                  view="agreementParams-edit">
+        <instance id="serviceTeamDc"
+                  class="servicecatalog.entity.ServiceTeam"
+                  view="serviceTeam-edit">
             <loader/>
         </instance>
     </data>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="agreementParamsDc">
+        <form id="form" dataContainer="serviceTeamDc">
             <column width="250px">
-                <textField id="paramField" property="param"/>
+                <textField id="participantField" property="participant"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

@@ -1,8 +1,6 @@
 package servicecatalog.entity;
 
-import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.security.entity.User;
 
 import javax.persistence.*;
 
@@ -11,13 +9,20 @@ import javax.persistence.*;
 public class ServiceTeam extends StandardEntity {
     private static final long serialVersionUID = -4311329436219299393L;
 
-    @Transient
-    @MetaProperty
-    protected User participant;
+    @Column(name = "PARTICIPANT")
+    protected String participant;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SERVICE_ID")
     protected Service service;
+
+    public void setParticipant(String participant) {
+        this.participant = participant;
+    }
+
+    public String getParticipant() {
+        return participant;
+    }
 
     public Service getService() {
         return service;
@@ -27,11 +32,4 @@ public class ServiceTeam extends StandardEntity {
         this.service = service;
     }
 
-    public User getParticipant() {
-        return participant;
-    }
-
-    public void setParticipant(User participant) {
-        this.participant = participant;
-    }
 }

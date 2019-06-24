@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
-    <view entity="srvcat_AgreementParams" name="agreementParams-view" extends="_local"/>
-    <view entity="srvcat_TypeAgreement" name="typeAgreement-view" extends="_local">
-        <property name="param" view="_minimal">
-            <property name="param"/>
-        </property>
+    <view entity="srvcat_AgreementParams" name="agreementParams-edit" extends="_minimal">
+        <property name="param"/>
     </view>
-    <view entity="srvcat_Service" name="service-view" extends="_local">
+    <view entity="srvcat_TypeAgreement" name="typeAgreement-edit" extends="_minimal">
+        <property name="liabilityOwner"/>
+        <property name="liabilityOrg"/>
+        <property name="param" view="agreementParams-edit"/>
+    </view>
+    <view entity="srvcat_Service" name="service-view" extends="_minimal">
+        <property name="title"/>
+        <property name="briefDesc"/>
+    </view>
+    <view entity="srvcat_ServiceTeam" name="serviceTeam-edit" extends="_minimal">
+        <property name="participant"/>
+    </view>
+    <view entity="srvcat_Service" name="service-edit" extends="_minimal">
+        <property name="title"/>
+        <property name="briefDesc"/>
+        <property name="fullDesc"/>
+        <property name="docsURL"/>
+        <property name="owner"/>
+        <property name="team" view="serviceTeam-edit"/>
+        <property name="format"/>
+        <property name="stakeHolder"/>
+        <property name="status"/>
         <property name="agreement" view="_minimal">
             <property name="liabilityOwner"/>
             <property name="liabilityOrg"/>
-            <property name="param" view="_minimal">
-                <property name="param"/>
-            </property>
+        </property>
+    </view>
+    <view entity="srvcat_ServiceRequest" name="serviceRequest-view" extends="_minimal">
+        <property name="requestStatus"/>
+        <property name="title"/>
+        <property name="briefDesc"/>
+    </view>
+    <view entity="srvcat_ServiceRequest" name="serviceRequest-edit" extends="_minimal">
+        <property name="requestStatus"/>
+        <property name="title"/>
+        <property name="briefDesc"/>
+        <property name="fullDesc"/>
+        <property name="docsURL"/>
+        <property name="owner"/>
+        <property name="team" view="serviceTeam-edit"/>
+        <property name="format"/>
+        <property name="stakeHolder"/>
+        <property name="status"/>
+        <property name="agreement" view="_minimal">
+            <property name="liabilityOwner"/>
+            <property name="liabilityOrg"/>
         </property>
     </view>
 </views>

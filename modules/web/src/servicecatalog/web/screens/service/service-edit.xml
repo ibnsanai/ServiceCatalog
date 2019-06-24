@@ -6,8 +6,10 @@
     <data>
         <instance id="serviceDc"
                   class="servicecatalog.entity.Service"
-                  view="_local">
+                  view="service-edit">
             <loader/>
+            <collection id="teamDc" property="team"/>
+            <collection id="agreementDc" property="agreement"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -19,13 +21,47 @@
                 <textField id="briefDescField" property="briefDesc"/>
                 <textField id="fullDescField" property="fullDesc"/>
                 <textField id="docsURLField" property="docsURL"/>
+                <textField id="ownerField" property="owner"/>
                 <lookupField id="formatField" property="format"/>
                 <textField id="stakeHolderField" property="stakeHolder"/>
                 <lookupField id="statusField" property="status"/>
-                <textField id="countRequestField" property="countRequest"/>
-                <textField id="countConfirmAgreementField" property="countConfirmAgreement"/>
             </column>
         </form>
+        <groupBox id="teamBox" caption="msg://servicecatalog.entity/Service.team">
+            <table id="teamTable" dataContainer="teamDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="participant"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="teamTable.create"/>
+                    <button action="teamTable.edit"/>
+                    <button action="teamTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="agreementBox" caption="msg://servicecatalog.entity/Service.agreement">
+            <table id="agreementTable" dataContainer="agreementDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="liabilityOwner"/>
+                    <column id="liabilityOrg"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="agreementTable.create"/>
+                    <button action="agreementTable.edit"/>
+                    <button action="agreementTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

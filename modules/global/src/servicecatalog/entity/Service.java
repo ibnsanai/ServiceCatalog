@@ -1,15 +1,16 @@
 package servicecatalog.entity;
 
 import com.haulmont.chile.core.annotations.Composition;
-import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
-import com.haulmont.cuba.security.entity.User;
 import servicecatalog.enums.ServiceFormat;
 import servicecatalog.enums.ServiceStatus;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Table(name = "SRVCAT_SERVICE")
@@ -29,9 +30,8 @@ public class Service extends StandardEntity {
     @Column(name = "DOCS_URL")
     protected String docsURL;
 
-    @Transient
-    @MetaProperty
-    protected User owner;
+    @Column(name = "OWNER")
+    protected String owner;
 
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
@@ -67,6 +67,14 @@ public class Service extends StandardEntity {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "service")
     protected List<AgreementConfirm> agrConfirm;
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
 
     public List<AgreementConfirm> getAgrConfirm() {
         return agrConfirm;
@@ -138,14 +146,6 @@ public class Service extends StandardEntity {
 
     public void setTeam(List<ServiceTeam> team) {
         this.team = team;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
     }
 
     public String getDocsURL() {
