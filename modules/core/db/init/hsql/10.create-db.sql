@@ -13,7 +13,6 @@ create table SRVCAT_SERVICE (
     TITLE varchar(255),
     BRIEF_DESC varchar(255),
     FULL_DESC varchar(255),
-    DOCS_URL varchar(255),
     OWNER varchar(255),
     FORMAT varchar(50),
     STAKE_HOLDER varchar(255),
@@ -115,3 +114,10 @@ create table SRVCAT_SERVICE_TEAM (
     primary key (ID)
 )^
 -- end SRVCAT_SERVICE_TEAM
+-- begin SERVICECATALOG_SERVICE_FILE_DESCRIPTOR_LINK
+create table SERVICECATALOG_SERVICE_FILE_DESCRIPTOR_LINK (
+    SERVICE_ID varchar(36) not null,
+    FILE_DESCRIPTOR_ID varchar(36) not null,
+    primary key (SERVICE_ID, FILE_DESCRIPTOR_ID)
+)^
+-- end SERVICECATALOG_SERVICE_FILE_DESCRIPTOR_LINK

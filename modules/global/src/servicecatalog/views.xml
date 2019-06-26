@@ -20,28 +20,7 @@
         <property name="title"/>
         <property name="briefDesc"/>
         <property name="fullDesc"/>
-        <property name="docsURL"/>
-        <property name="owner"/>
-        <property name="team" view="serviceTeam-edit"/>
-        <property name="format"/>
-        <property name="stakeHolder"/>
-        <property name="status"/>
-        <property name="agreement" view="_minimal">
-            <property name="liabilityOwner"/>
-            <property name="liabilityOrg"/>
-        </property>
-    </view>
-    <view entity="srvcat_ServiceRequest" name="serviceRequest-view" extends="_minimal">
-        <property name="requestStatus"/>
-        <property name="title"/>
-        <property name="briefDesc"/>
-    </view>
-    <view entity="srvcat_ServiceRequest" name="serviceRequest-edit" extends="_minimal">
-        <property name="requestStatus"/>
-        <property name="title"/>
-        <property name="briefDesc"/>
-        <property name="fullDesc"/>
-        <property name="docsURL"/>
+        <property name="supportingDocuments" view="_minimal"/>
         <property name="owner"/>
         <property name="team" view="serviceTeam-edit"/>
         <property name="format"/>

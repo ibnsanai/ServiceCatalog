@@ -1,16 +1,14 @@
 package servicecatalog.entity;
 
 import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import servicecatalog.enums.ServiceFormat;
 import servicecatalog.enums.ServiceStatus;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Table(name = "SRVCAT_SERVICE")
@@ -27,8 +25,9 @@ public class Service extends StandardEntity {
     @Column(name = "FULL_DESC")
     protected String fullDesc;
 
-    @Column(name = "DOCS_URL")
-    protected String docsURL;
+    @JoinTable(name = "SERVICECATALOG_SERVICE_FILE_DESCRIPTOR_LINK", joinColumns = @JoinColumn(name = "SERVICE_ID"), inverseJoinColumns = @JoinColumn(name = "FILE_DESCRIPTOR_ID"))
+    @ManyToMany
+    private List<FileDescriptor> supportingDocuments;
 
     @Column(name = "OWNER")
     protected String owner;
@@ -67,6 +66,14 @@ public class Service extends StandardEntity {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "service")
     protected List<AgreementConfirm> agrConfirm;
+
+    public List<FileDescriptor> getSupportingDocuments() {
+        return supportingDocuments;
+    }
+
+    public void setSupportingDocuments(List<FileDescriptor> supportingDocuments) {
+        this.supportingDocuments = supportingDocuments;
+    }
 
     public void setOwner(String owner) {
         this.owner = owner;
@@ -146,14 +153,6 @@ public class Service extends StandardEntity {
 
     public void setTeam(List<ServiceTeam> team) {
         this.team = team;
-    }
-
-    public String getDocsURL() {
-        return docsURL;
-    }
-
-    public void setDocsURL(String docsURL) {
-        this.docsURL = docsURL;
     }
 
     public String getFullDesc() {

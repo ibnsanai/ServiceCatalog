@@ -7,12 +7,21 @@
       maxTotal="20"
       maxIdle="2"
       maxWaitMillis="5000"
-      driverClassName="org.hsqldb.jdbc.JDBCDriver"
-      url="jdbc:hsqldb:hsql://localhost:9010/servicecatalog"
-      username="sa"
-      password=""/>
+      driverClassName="org.postgresql.Driver"
+      url="jdbc:postgresql://217.73.60.162/servicecatalog"
+      username="srvctlg"
+      password="Pa$$vv0rd"/>
 
     <!-- Switch off session serialization -->
     <Manager pathname=""/>
+    <!--<Resource driverClassName="org.hsqldb.jdbc.JDBCDriver"
+          maxIdle="2"
+          maxTotal="20"
+          maxWaitMillis="5000"
+          name="jdbc/CubaDS"
+          password=""
+          type="javax.sql.DataSource"
+          url="jdbc:hsqldb:hsql://localhost:9010/servicecatalog"
+          username="sa"/>-->
 
 </Context>

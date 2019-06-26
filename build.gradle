@@ -40,7 +40,7 @@ dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
 }
 
-def hsql = 'org.hsqldb:hsqldb:2.4.1'
+def postgres = 'org.postgresql:postgresql:42.2.5'
 
 configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'java')
@@ -86,8 +86,8 @@ configure(coreModule) {
     dependencies {
         compile(globalModule)
         compileOnly(servletApi)
-        jdbc(hsql)
-        testRuntime(hsql)
+        jdbc(postgres)
+        testRuntime(postgres)
     }
 
     task cleanConf(description: 'Cleans up conf directory') {
@@ -107,19 +107,19 @@ configure(coreModule) {
     }
 
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
-        dbms = 'hsql'
-        host = 'localhost:9010'
+        dbms = 'postgres'
+        host = '217.73.60.162'
         dbName = 'servicecatalog'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbUser = 'srvctlg'
+        dbPassword = 'Pa$$vv0rd'
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
-        dbms = 'hsql'
-        host = 'localhost:9010'
+        dbms = 'postgres'
+        host = '217.73.60.162'
         dbName = 'servicecatalog'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbUser = 'srvctlg'
+        dbPassword = 'Pa$$vv0rd'
     }
 }
 
@@ -188,3 +188,10 @@ task restart(dependsOn: ['stop', ":${modulePrefix}-core:deploy", ":${modulePrefi
     }
 }
 
+task buildWar(type: CubaWarBuilding) {
+    includeJdbcDriver = true
+    appProperties = ['cuba.automaticDatabaseUpdate': true]
+    webXmlPath = 'modules/web/web/WEB-INF/single-war-web.xml'
+    appHome = '../app_home'
+    logbackConfigurationFile = 'etc/war-logback.xml'
+}
